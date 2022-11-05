@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package api;
+
+option go_package = "github.com/Boutit/auth/api";
+
+import "api/token.proto";
+import "api/google/api/annotations.proto";
+
+service AuthService {
+  rpc CreateToken(CreateTokenRequest) returns (CreateTokenResponse) {
+    option (google.api.http) = {
+      post: "/v1/create"
+      body: "*"
+      response_body: "*"
+    };
+  };
+
+  rpc RefreshAccessToken(RefreshAccessTokenRequest) returns (RefreshAccessTokenResponse) {
+    option (google.api.http) = {
+      post: "/v1/refresh"
+      body: "*"
+      response_body: "*"
+    };
+  };
+
+  rpc ValidateToken(ValidateTokenRequest) returns (ValidateTokenResponse) {
+    option (google.api.http) = {
+      post: "/v1/validate"
+      body: "*"
+      response_body: "*"
+    };
+  };
+}

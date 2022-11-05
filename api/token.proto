@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package api;
+
+option go_package = "github.com/Boutit/auth/api";
+
+message CreateTokenRequest {
+
+}
+
+message CreateTokenResponse {
+
+}
+
+message ValidateTokenRequest {
+
+}
+
+message ValidateTokenResponse {
+
+}
+
+message RefreshAccessTokenRequest {
+  
+}
+
+message RefreshAccessTokenResponse {
+
+}
+
+
