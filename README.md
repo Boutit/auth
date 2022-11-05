@@ -10,11 +10,11 @@ make run.local
 
 ##### grpcurl
 
-grpcurl --plaintext -d '{"user": {"username": "john_doe"}}' localhost:8080 api.UserService/CreateUser
+grpcurl --plaintext -d '{"user": {"username": "john_doe"}}' localhost:8080 api.AuthService/CreateToken
 
 ##### curl
 
-curl -X POST -k http://localhost:8090/v1/user -d '{"user": {"username": "jane_doe"}}'
+curl -X POST -k http://localhost:8090/v1/create -d '{"user": {"username": "jane_doe"}}'
 
 ## Resources
 
