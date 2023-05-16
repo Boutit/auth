@@ -10,7 +10,7 @@ make run.local
 
 ##### grpcurl
 
-grpcurl --plaintext -d '{"user": {"username": "john_doe"}}' localhost:8080 api.AuthService/CreateToken
+grpcurl --plaintext -d '{"userId": "12345"}' localhost:8080 api.AuthService/CreateToken
 
 ##### curl
 

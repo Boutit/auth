@@ -5,11 +5,12 @@ package api;
 option go_package = "github.com/Boutit/auth/api";
 
 message CreateTokenRequest {
-
+  string userId = 1;
+  repeated string roles = 2;
 }
 
 message CreateTokenResponse {
-
+ string token = 1;
 }
 
 message ValidateTokenRequest {
