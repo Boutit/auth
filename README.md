@@ -12,6 +12,8 @@ make run.local
 
 grpcurl --plaintext -d '{"userId": "12345"}' localhost:8080 api.AuthService/CreateToken
 
+grpcurl --plaintext -d '{"token": ADD_TOKEN_HERE}' localhost:8080 api.AuthService/ValidateToken
+
 ##### curl
 
 curl -X POST -k http://localhost:8090/v1/create -d '{"user": {"username": "jane_doe"}}'

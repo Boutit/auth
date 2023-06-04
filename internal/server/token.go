@@ -40,7 +40,38 @@ func (s authServiceServer) CreateToken(ctx context.Context, req *api.CreateToken
 }
 
 func (s authServiceServer) ValidateToken(ctx context.Context, req *api.ValidateTokenRequest) (*api.ValidateTokenResponse, error) {
-	return &api.ValidateTokenResponse{}, nil
+	
+	token, err := jwt.Parse(req.Token, func(token *jwt.Token) (interface{}, error) {
+		if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
+			return nil, fmt.Errorf("unexpected signing method: %v", token.Header["alg"])
+		}
+		return []byte(config.GetTokenConfig().AccessTokenPrivateKey), nil
+	})
+
+	if (err != nil){
+		return nil, err
+	}
+
+	// check for an audience claim
+	aud, ok := token.Claims.(jwt.MapClaims)["aud"]
+	if !ok {
+			return nil, fmt.Errorf("token had no audience claim")
+	}
+
+	// check that audience is from the issuer
+	if aud != "api" {
+			return nil, fmt.Errorf("token had the wrong audience claim")
+	}
+
+	tokenString, err := token.SignedString([]byte(config.GetTokenConfig().AccessTokenPublicKey))
+
+	if (err != nil){
+		return nil, fmt.Errorf("unable to validate token due to error: %t", err)
+	}
+
+	return &api.ValidateTokenResponse{
+		Token: tokenString,
+	}, nil
 }
 
 func (s authServiceServer) RefreshAccessToken(ctx context.Context, req *api.RefreshAccessTokenRequest) (*api.RefreshAccessTokenResponse, error) {
