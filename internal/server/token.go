@@ -5,12 +5,12 @@ import (
 	"fmt"
 	"time"
 
-	api "github.com/Boutit/auth/api/protos/boutit/auth"
+	"github.com/Boutit/auth/api/protos/boutit/auth"
 	"github.com/Boutit/auth/internal/config"
 	"github.com/golang-jwt/jwt"
 )
 
-func (s authServiceServer) CreateToken(ctx context.Context, req *api.CreateTokenRequest) (*api.CreateTokenResponse, error) {
+func (s authServiceServer) CreateToken(ctx context.Context, req *auth.CreateTokenRequest) (*auth.CreateTokenResponse, error) {
 	now := time.Now()
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
 			// standardized claims
@@ -31,15 +31,15 @@ func (s authServiceServer) CreateToken(ctx context.Context, req *api.CreateToken
 	tokenString, err := token.SignedString([]byte(config.GetTokenConfig().AccessTokenPrivateKey))
 
 	if (err != nil){
-		return &api.CreateTokenResponse{}, fmt.Errorf("unable to sign token for userId: %s due to error: %t", req.UserId, err)
+		return &auth.CreateTokenResponse{}, fmt.Errorf("unable to sign token for userId: %s due to error: %t", req.UserId, err)
 	}
 
-	return &api.CreateTokenResponse{
+	return &auth.CreateTokenResponse{
 		Token: tokenString,
 	}, nil
 }
 
-func (s authServiceServer) ValidateToken(ctx context.Context, req *api.ValidateTokenRequest) (*api.ValidateTokenResponse, error) {
+func (s authServiceServer) ValidateToken(ctx context.Context, req *auth.ValidateTokenRequest) (*auth.ValidateTokenResponse, error) {
 	
 	token, err := jwt.Parse(req.Token, func(token *jwt.Token) (interface{}, error) {
 		if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
@@ -69,11 +69,11 @@ func (s authServiceServer) ValidateToken(ctx context.Context, req *api.ValidateT
 		return nil, fmt.Errorf("unable to validate token due to error: %t", err)
 	}
 
-	return &api.ValidateTokenResponse{
+	return &auth.ValidateTokenResponse{
 		Token: tokenString,
 	}, nil
 }
 
-func (s authServiceServer) RefreshAccessToken(ctx context.Context, req *api.RefreshAccessTokenRequest) (*api.RefreshAccessTokenResponse, error) {
-	return &api.RefreshAccessTokenResponse{}, nil
+func (s authServiceServer) RefreshAccessToken(ctx context.Context, req *auth.RefreshAccessTokenRequest) (*auth.RefreshAccessTokenResponse, error) {
+	return &auth.RefreshAccessTokenResponse{}, nil
 }
