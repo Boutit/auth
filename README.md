@@ -10,9 +10,9 @@ make run.local
 
 ##### grpcurl
 
-grpcurl --plaintext -d '{"userId": "12345"}' localhost:8080 api.AuthService/CreateToken
+grpcurl --plaintext -d '{"userId": "12345"}' localhost:8080 boutit.auth.api.AuthService/CreateToken
 
-grpcurl --plaintext -d '{"token": ADD_TOKEN_HERE}' localhost:8080 api.AuthService/ValidateToken
+grpcurl --plaintext -d '{"token": ADD_TOKEN_HERE}' localhost:8080 boutit.auth.api.AuthService/ValidateToken
 
 ##### curl
 

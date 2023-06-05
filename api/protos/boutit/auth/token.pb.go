@@ -2,9 +2,9 @@
 // versions:
 // 	protoc-gen-go v1.28.1
 // 	protoc        v3.21.7
-// source: api/token.proto
+// source: api/protos/boutit/auth/token.proto
 
-package api
+package auth
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -32,7 +32,7 @@ type CreateTokenRequest struct {
 func (x *CreateTokenRequest) Reset() {
 	*x = CreateTokenRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_token_proto_msgTypes[0]
+		mi := &file_api_protos_boutit_auth_token_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -45,7 +45,7 @@ func (x *CreateTokenRequest) String() string {
 func (*CreateTokenRequest) ProtoMessage() {}
 
 func (x *CreateTokenRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_token_proto_msgTypes[0]
+	mi := &file_api_protos_boutit_auth_token_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -58,7 +58,7 @@ func (x *CreateTokenRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateTokenRequest.ProtoReflect.Descriptor instead.
 func (*CreateTokenRequest) Descriptor() ([]byte, []int) {
-	return file_api_token_proto_rawDescGZIP(), []int{0}
+	return file_api_protos_boutit_auth_token_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *CreateTokenRequest) GetUserId() string {
@@ -86,7 +86,7 @@ type CreateTokenResponse struct {
 func (x *CreateTokenResponse) Reset() {
 	*x = CreateTokenResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_token_proto_msgTypes[1]
+		mi := &file_api_protos_boutit_auth_token_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -99,7 +99,7 @@ func (x *CreateTokenResponse) String() string {
 func (*CreateTokenResponse) ProtoMessage() {}
 
 func (x *CreateTokenResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_api_token_proto_msgTypes[1]
+	mi := &file_api_protos_boutit_auth_token_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -112,7 +112,7 @@ func (x *CreateTokenResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateTokenResponse.ProtoReflect.Descriptor instead.
 func (*CreateTokenResponse) Descriptor() ([]byte, []int) {
-	return file_api_token_proto_rawDescGZIP(), []int{1}
+	return file_api_protos_boutit_auth_token_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *CreateTokenResponse) GetToken() string {
@@ -133,7 +133,7 @@ type ValidateTokenRequest struct {
 func (x *ValidateTokenRequest) Reset() {
 	*x = ValidateTokenRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_token_proto_msgTypes[2]
+		mi := &file_api_protos_boutit_auth_token_proto_msgTypes[2]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -146,7 +146,7 @@ func (x *ValidateTokenRequest) String() string {
 func (*ValidateTokenRequest) ProtoMessage() {}
 
 func (x *ValidateTokenRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_token_proto_msgTypes[2]
+	mi := &file_api_protos_boutit_auth_token_proto_msgTypes[2]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -159,7 +159,7 @@ func (x *ValidateTokenRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ValidateTokenRequest.ProtoReflect.Descriptor instead.
 func (*ValidateTokenRequest) Descriptor() ([]byte, []int) {
-	return file_api_token_proto_rawDescGZIP(), []int{2}
+	return file_api_protos_boutit_auth_token_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *ValidateTokenRequest) GetToken() string {
@@ -180,7 +180,7 @@ type ValidateTokenResponse struct {
 func (x *ValidateTokenResponse) Reset() {
 	*x = ValidateTokenResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_token_proto_msgTypes[3]
+		mi := &file_api_protos_boutit_auth_token_proto_msgTypes[3]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -193,7 +193,7 @@ func (x *ValidateTokenResponse) String() string {
 func (*ValidateTokenResponse) ProtoMessage() {}
 
 func (x *ValidateTokenResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_api_token_proto_msgTypes[3]
+	mi := &file_api_protos_boutit_auth_token_proto_msgTypes[3]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -206,7 +206,7 @@ func (x *ValidateTokenResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ValidateTokenResponse.ProtoReflect.Descriptor instead.
 func (*ValidateTokenResponse) Descriptor() ([]byte, []int) {
-	return file_api_token_proto_rawDescGZIP(), []int{3}
+	return file_api_protos_boutit_auth_token_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *ValidateTokenResponse) GetToken() string {
@@ -225,7 +225,7 @@ type RefreshAccessTokenRequest struct {
 func (x *RefreshAccessTokenRequest) Reset() {
 	*x = RefreshAccessTokenRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_token_proto_msgTypes[4]
+		mi := &file_api_protos_boutit_auth_token_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -238,7 +238,7 @@ func (x *RefreshAccessTokenRequest) String() string {
 func (*RefreshAccessTokenRequest) ProtoMessage() {}
 
 func (x *RefreshAccessTokenRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_token_proto_msgTypes[4]
+	mi := &file_api_protos_boutit_auth_token_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -251,7 +251,7 @@ func (x *RefreshAccessTokenRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RefreshAccessTokenRequest.ProtoReflect.Descriptor instead.
 func (*RefreshAccessTokenRequest) Descriptor() ([]byte, []int) {
-	return file_api_token_proto_rawDescGZIP(), []int{4}
+	return file_api_protos_boutit_auth_token_proto_rawDescGZIP(), []int{4}
 }
 
 type RefreshAccessTokenResponse struct {
@@ -263,7 +263,7 @@ type RefreshAccessTokenResponse struct {
 func (x *RefreshAccessTokenResponse) Reset() {
 	*x = RefreshAccessTokenResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_token_proto_msgTypes[5]
+		mi := &file_api_protos_boutit_auth_token_proto_msgTypes[5]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -276,7 +276,7 @@ func (x *RefreshAccessTokenResponse) String() string {
 func (*RefreshAccessTokenResponse) ProtoMessage() {}
 
 func (x *RefreshAccessTokenResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_api_token_proto_msgTypes[5]
+	mi := &file_api_protos_boutit_auth_token_proto_msgTypes[5]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -289,57 +289,60 @@ func (x *RefreshAccessTokenResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RefreshAccessTokenResponse.ProtoReflect.Descriptor instead.
 func (*RefreshAccessTokenResponse) Descriptor() ([]byte, []int) {
-	return file_api_token_proto_rawDescGZIP(), []int{5}
+	return file_api_protos_boutit_auth_token_proto_rawDescGZIP(), []int{5}
 }
 
-var File_api_token_proto protoreflect.FileDescriptor
+var File_api_protos_boutit_auth_token_proto protoreflect.FileDescriptor
 
-var file_api_token_proto_rawDesc = []byte{
-	0x0a, 0x0f, 0x61, 0x70, 0x69, 0x2f, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x2e, 0x70, 0x72, 0x6f, 0x74,
-	0x6f, 0x12, 0x03, 0x61, 0x70, 0x69, 0x22, 0x42, 0x0a, 0x12, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65,
-	0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x16, 0x0a, 0x06,
-	0x75, 0x73, 0x65, 0x72, 0x49, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x75, 0x73,
-	0x65, 0x72, 0x49, 0x64, 0x12, 0x14, 0x0a, 0x05, 0x72, 0x6f, 0x6c, 0x65, 0x73, 0x18, 0x02, 0x20,
-	0x03, 0x28, 0x09, 0x52, 0x05, 0x72, 0x6f, 0x6c, 0x65, 0x73, 0x22, 0x2b, 0x0a, 0x13, 0x43, 0x72,
-	0x65, 0x61, 0x74, 0x65, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73,
-	0x65, 0x12, 0x14, 0x0a, 0x05, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09,
-	0x52, 0x05, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x22, 0x2c, 0x0a, 0x14, 0x56, 0x61, 0x6c, 0x69, 0x64,
-	0x61, 0x74, 0x65, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12,
-	0x14, 0x0a, 0x05, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05,
-	0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x22, 0x2d, 0x0a, 0x15, 0x56, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74,
-	0x65, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x14,
+var file_api_protos_boutit_auth_token_proto_rawDesc = []byte{
+	0x0a, 0x22, 0x61, 0x70, 0x69, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x73, 0x2f, 0x62, 0x6f, 0x75,
+	0x74, 0x69, 0x74, 0x2f, 0x61, 0x75, 0x74, 0x68, 0x2f, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x2e, 0x70,
+	0x72, 0x6f, 0x74, 0x6f, 0x12, 0x0f, 0x62, 0x6f, 0x75, 0x74, 0x69, 0x74, 0x2e, 0x61, 0x75, 0x74,
+	0x68, 0x2e, 0x61, 0x70, 0x69, 0x22, 0x42, 0x0a, 0x12, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x54,
+	0x6f, 0x6b, 0x65, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x16, 0x0a, 0x06, 0x75,
+	0x73, 0x65, 0x72, 0x49, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x75, 0x73, 0x65,
+	0x72, 0x49, 0x64, 0x12, 0x14, 0x0a, 0x05, 0x72, 0x6f, 0x6c, 0x65, 0x73, 0x18, 0x02, 0x20, 0x03,
+	0x28, 0x09, 0x52, 0x05, 0x72, 0x6f, 0x6c, 0x65, 0x73, 0x22, 0x2b, 0x0a, 0x13, 0x43, 0x72, 0x65,
+	0x61, 0x74, 0x65, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
+	0x12, 0x14, 0x0a, 0x05, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x05, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x22, 0x2c, 0x0a, 0x14, 0x56, 0x61, 0x6c, 0x69, 0x64, 0x61,
+	0x74, 0x65, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x14,
 	0x0a, 0x05, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x74,
-	0x6f, 0x6b, 0x65, 0x6e, 0x22, 0x1b, 0x0a, 0x19, 0x52, 0x65, 0x66, 0x72, 0x65, 0x73, 0x68, 0x41,
-	0x63, 0x63, 0x65, 0x73, 0x73, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
-	0x74, 0x22, 0x1c, 0x0a, 0x1a, 0x52, 0x65, 0x66, 0x72, 0x65, 0x73, 0x68, 0x41, 0x63, 0x63, 0x65,
-	0x73, 0x73, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x42,
-	0x1c, 0x5a, 0x1a, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x42, 0x6f,
-	0x75, 0x74, 0x69, 0x74, 0x2f, 0x61, 0x75, 0x74, 0x68, 0x2f, 0x61, 0x70, 0x69, 0x62, 0x06, 0x70,
-	0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x6f, 0x6b, 0x65, 0x6e, 0x22, 0x2d, 0x0a, 0x15, 0x56, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x65,
+	0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x14, 0x0a,
+	0x05, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x74, 0x6f,
+	0x6b, 0x65, 0x6e, 0x22, 0x1b, 0x0a, 0x19, 0x52, 0x65, 0x66, 0x72, 0x65, 0x73, 0x68, 0x41, 0x63,
+	0x63, 0x65, 0x73, 0x73, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
+	0x22, 0x1c, 0x0a, 0x1a, 0x52, 0x65, 0x66, 0x72, 0x65, 0x73, 0x68, 0x41, 0x63, 0x63, 0x65, 0x73,
+	0x73, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x42, 0x2f,
+	0x5a, 0x2d, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x42, 0x6f, 0x75,
+	0x74, 0x69, 0x74, 0x2f, 0x61, 0x75, 0x74, 0x68, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x70, 0x72, 0x6f,
+	0x74, 0x6f, 0x73, 0x2f, 0x62, 0x6f, 0x75, 0x74, 0x69, 0x74, 0x2f, 0x61, 0x75, 0x74, 0x68, 0x62,
+	0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
-	file_api_token_proto_rawDescOnce sync.Once
-	file_api_token_proto_rawDescData = file_api_token_proto_rawDesc
+	file_api_protos_boutit_auth_token_proto_rawDescOnce sync.Once
+	file_api_protos_boutit_auth_token_proto_rawDescData = file_api_protos_boutit_auth_token_proto_rawDesc
 )
 
-func file_api_token_proto_rawDescGZIP() []byte {
-	file_api_token_proto_rawDescOnce.Do(func() {
-		file_api_token_proto_rawDescData = protoimpl.X.CompressGZIP(file_api_token_proto_rawDescData)
+func file_api_protos_boutit_auth_token_proto_rawDescGZIP() []byte {
+	file_api_protos_boutit_auth_token_proto_rawDescOnce.Do(func() {
+		file_api_protos_boutit_auth_token_proto_rawDescData = protoimpl.X.CompressGZIP(file_api_protos_boutit_auth_token_proto_rawDescData)
 	})
-	return file_api_token_proto_rawDescData
+	return file_api_protos_boutit_auth_token_proto_rawDescData
 }
 
-var file_api_token_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
-var file_api_token_proto_goTypes = []interface{}{
-	(*CreateTokenRequest)(nil),         // 0: api.CreateTokenRequest
-	(*CreateTokenResponse)(nil),        // 1: api.CreateTokenResponse
-	(*ValidateTokenRequest)(nil),       // 2: api.ValidateTokenRequest
-	(*ValidateTokenResponse)(nil),      // 3: api.ValidateTokenResponse
-	(*RefreshAccessTokenRequest)(nil),  // 4: api.RefreshAccessTokenRequest
-	(*RefreshAccessTokenResponse)(nil), // 5: api.RefreshAccessTokenResponse
+var file_api_protos_boutit_auth_token_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+var file_api_protos_boutit_auth_token_proto_goTypes = []interface{}{
+	(*CreateTokenRequest)(nil),         // 0: boutit.auth.api.CreateTokenRequest
+	(*CreateTokenResponse)(nil),        // 1: boutit.auth.api.CreateTokenResponse
+	(*ValidateTokenRequest)(nil),       // 2: boutit.auth.api.ValidateTokenRequest
+	(*ValidateTokenResponse)(nil),      // 3: boutit.auth.api.ValidateTokenResponse
+	(*RefreshAccessTokenRequest)(nil),  // 4: boutit.auth.api.RefreshAccessTokenRequest
+	(*RefreshAccessTokenResponse)(nil), // 5: boutit.auth.api.RefreshAccessTokenResponse
 }
-var file_api_token_proto_depIdxs = []int32{
+var file_api_protos_boutit_auth_token_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type
 	0, // [0:0] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
@@ -347,13 +350,13 @@ var file_api_token_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for field type_name
 }
 
-func init() { file_api_token_proto_init() }
-func file_api_token_proto_init() {
-	if File_api_token_proto != nil {
+func init() { file_api_protos_boutit_auth_token_proto_init() }
+func file_api_protos_boutit_auth_token_proto_init() {
+	if File_api_protos_boutit_auth_token_proto != nil {
 		return
 	}
 	if !protoimpl.UnsafeEnabled {
-		file_api_token_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
+		file_api_protos_boutit_auth_token_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*CreateTokenRequest); i {
 			case 0:
 				return &v.state
@@ -365,7 +368,7 @@ func file_api_token_proto_init() {
 				return nil
 			}
 		}
-		file_api_token_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
+		file_api_protos_boutit_auth_token_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*CreateTokenResponse); i {
 			case 0:
 				return &v.state
@@ -377,7 +380,7 @@ func file_api_token_proto_init() {
 				return nil
 			}
 		}
-		file_api_token_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
+		file_api_protos_boutit_auth_token_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*ValidateTokenRequest); i {
 			case 0:
 				return &v.state
@@ -389,7 +392,7 @@ func file_api_token_proto_init() {
 				return nil
 			}
 		}
-		file_api_token_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
+		file_api_protos_boutit_auth_token_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*ValidateTokenResponse); i {
 			case 0:
 				return &v.state
@@ -401,7 +404,7 @@ func file_api_token_proto_init() {
 				return nil
 			}
 		}
-		file_api_token_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
+		file_api_protos_boutit_auth_token_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*RefreshAccessTokenRequest); i {
 			case 0:
 				return &v.state
@@ -413,7 +416,7 @@ func file_api_token_proto_init() {
 				return nil
 			}
 		}
-		file_api_token_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
+		file_api_protos_boutit_auth_token_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*RefreshAccessTokenResponse); i {
 			case 0:
 				return &v.state
@@ -430,18 +433,18 @@ func file_api_token_proto_init() {
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: file_api_token_proto_rawDesc,
+			RawDescriptor: file_api_protos_boutit_auth_token_proto_rawDesc,
 			NumEnums:      0,
 			NumMessages:   6,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
-		GoTypes:           file_api_token_proto_goTypes,
-		DependencyIndexes: file_api_token_proto_depIdxs,
-		MessageInfos:      file_api_token_proto_msgTypes,
+		GoTypes:           file_api_protos_boutit_auth_token_proto_goTypes,
+		DependencyIndexes: file_api_protos_boutit_auth_token_proto_depIdxs,
+		MessageInfos:      file_api_protos_boutit_auth_token_proto_msgTypes,
 	}.Build()
-	File_api_token_proto = out.File
-	file_api_token_proto_rawDesc = nil
-	file_api_token_proto_goTypes = nil
-	file_api_token_proto_depIdxs = nil
+	File_api_protos_boutit_auth_token_proto = out.File
+	file_api_protos_boutit_auth_token_proto_rawDesc = nil
+	file_api_protos_boutit_auth_token_proto_goTypes = nil
+	file_api_protos_boutit_auth_token_proto_depIdxs = nil
 }

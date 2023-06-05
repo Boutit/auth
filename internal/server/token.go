@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/Boutit/auth/api"
+	api "github.com/Boutit/auth/api/protos/boutit/auth"
 	"github.com/Boutit/auth/internal/config"
 	"github.com/golang-jwt/jwt"
 )

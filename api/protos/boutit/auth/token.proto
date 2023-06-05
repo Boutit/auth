@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-package api;
+package boutit.auth.api;
 
-option go_package = "github.com/Boutit/auth/api";
+option go_package = "github.com/Boutit/auth/api/protos/boutit/auth";
 
 message CreateTokenRequest {
   string userId = 1;

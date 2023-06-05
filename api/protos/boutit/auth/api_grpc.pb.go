@@ -2,9 +2,9 @@
 // versions:
 // - protoc-gen-go-grpc v1.2.0
 // - protoc             v3.21.7
-// source: api/api.proto
+// source: api/protos/boutit/auth/api.proto
 
-package api
+package auth
 
 import (
 	context "context"
@@ -37,7 +37,7 @@ func NewAuthServiceClient(cc grpc.ClientConnInterface) AuthServiceClient {
 
 func (c *authServiceClient) CreateToken(ctx context.Context, in *CreateTokenRequest, opts ...grpc.CallOption) (*CreateTokenResponse, error) {
 	out := new(CreateTokenResponse)
-	err := c.cc.Invoke(ctx, "/api.AuthService/CreateToken", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/boutit.auth.api.AuthService/CreateToken", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -46,7 +46,7 @@ func (c *authServiceClient) CreateToken(ctx context.Context, in *CreateTokenRequ
 
 func (c *authServiceClient) RefreshAccessToken(ctx context.Context, in *RefreshAccessTokenRequest, opts ...grpc.CallOption) (*RefreshAccessTokenResponse, error) {
 	out := new(RefreshAccessTokenResponse)
-	err := c.cc.Invoke(ctx, "/api.AuthService/RefreshAccessToken", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/boutit.auth.api.AuthService/RefreshAccessToken", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -55,7 +55,7 @@ func (c *authServiceClient) RefreshAccessToken(ctx context.Context, in *RefreshA
 
 func (c *authServiceClient) ValidateToken(ctx context.Context, in *ValidateTokenRequest, opts ...grpc.CallOption) (*ValidateTokenResponse, error) {
 	out := new(ValidateTokenResponse)
-	err := c.cc.Invoke(ctx, "/api.AuthService/ValidateToken", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/boutit.auth.api.AuthService/ValidateToken", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -106,7 +106,7 @@ func _AuthService_CreateToken_Handler(srv interface{}, ctx context.Context, dec 
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/api.AuthService/CreateToken",
+		FullMethod: "/boutit.auth.api.AuthService/CreateToken",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(AuthServiceServer).CreateToken(ctx, req.(*CreateTokenRequest))
@@ -124,7 +124,7 @@ func _AuthService_RefreshAccessToken_Handler(srv interface{}, ctx context.Contex
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/api.AuthService/RefreshAccessToken",
+		FullMethod: "/boutit.auth.api.AuthService/RefreshAccessToken",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(AuthServiceServer).RefreshAccessToken(ctx, req.(*RefreshAccessTokenRequest))
@@ -142,7 +142,7 @@ func _AuthService_ValidateToken_Handler(srv interface{}, ctx context.Context, de
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/api.AuthService/ValidateToken",
+		FullMethod: "/boutit.auth.api.AuthService/ValidateToken",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(AuthServiceServer).ValidateToken(ctx, req.(*ValidateTokenRequest))
@@ -154,7 +154,7 @@ func _AuthService_ValidateToken_Handler(srv interface{}, ctx context.Context, de
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var AuthService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "api.AuthService",
+	ServiceName: "boutit.auth.api.AuthService",
 	HandlerType: (*AuthServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -171,5 +171,5 @@ var AuthService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "api/api.proto",
+	Metadata: "api/protos/boutit/auth/api.proto",
 }
