@@ -10,7 +10,7 @@ import "api/google/api/annotations.proto";
 service AuthService {
   rpc CreateToken(CreateTokenRequest) returns (CreateTokenResponse) {
     option (google.api.http) = {
-      post: "/v1/create"
+      post: "/v1/auth/create_token"
       body: "*"
       response_body: "*"
     };
@@ -18,7 +18,7 @@ service AuthService {
 
   rpc RefreshAccessToken(RefreshAccessTokenRequest) returns (RefreshAccessTokenResponse) {
     option (google.api.http) = {
-      post: "/v1/refresh"
+      post: "/v1/auth/refresh_token"
       body: "*"
       response_body: "*"
     };
@@ -26,7 +26,7 @@ service AuthService {
 
   rpc ValidateToken(ValidateTokenRequest) returns (ValidateTokenResponse) {
     option (google.api.http) = {
-      post: "/v1/validate"
+      post: "/v1/auth/validate_token"
       body: "*"
       response_body: "*"
     };

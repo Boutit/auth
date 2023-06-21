@@ -147,7 +147,7 @@ func RegisterAuthServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/boutit.auth.api.AuthService/CreateToken", runtime.WithHTTPPathPattern("/v1/create"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/boutit.auth.api.AuthService/CreateToken", runtime.WithHTTPPathPattern("/v1/auth/create_token"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -172,7 +172,7 @@ func RegisterAuthServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/boutit.auth.api.AuthService/RefreshAccessToken", runtime.WithHTTPPathPattern("/v1/refresh"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/boutit.auth.api.AuthService/RefreshAccessToken", runtime.WithHTTPPathPattern("/v1/auth/refresh_token"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -197,7 +197,7 @@ func RegisterAuthServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/boutit.auth.api.AuthService/ValidateToken", runtime.WithHTTPPathPattern("/v1/validate"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/boutit.auth.api.AuthService/ValidateToken", runtime.WithHTTPPathPattern("/v1/auth/validate_token"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -261,7 +261,7 @@ func RegisterAuthServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/boutit.auth.api.AuthService/CreateToken", runtime.WithHTTPPathPattern("/v1/create"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/boutit.auth.api.AuthService/CreateToken", runtime.WithHTTPPathPattern("/v1/auth/create_token"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -283,7 +283,7 @@ func RegisterAuthServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/boutit.auth.api.AuthService/RefreshAccessToken", runtime.WithHTTPPathPattern("/v1/refresh"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/boutit.auth.api.AuthService/RefreshAccessToken", runtime.WithHTTPPathPattern("/v1/auth/refresh_token"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -305,7 +305,7 @@ func RegisterAuthServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/boutit.auth.api.AuthService/ValidateToken", runtime.WithHTTPPathPattern("/v1/validate"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/boutit.auth.api.AuthService/ValidateToken", runtime.WithHTTPPathPattern("/v1/auth/validate_token"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -325,11 +325,11 @@ func RegisterAuthServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 }
 
 var (
-	pattern_AuthService_CreateToken_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "create"}, ""))
+	pattern_AuthService_CreateToken_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"v1", "auth", "create_token"}, ""))
 
-	pattern_AuthService_RefreshAccessToken_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "refresh"}, ""))
+	pattern_AuthService_RefreshAccessToken_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"v1", "auth", "refresh_token"}, ""))
 
-	pattern_AuthService_ValidateToken_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "validate"}, ""))
+	pattern_AuthService_ValidateToken_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"v1", "auth", "validate_token"}, ""))
 )
 
 var (

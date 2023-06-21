@@ -16,7 +16,7 @@ grpcurl --plaintext -d '{"token": ADD_TOKEN_HERE}' localhost:8080 boutit.auth.ap
 
 ##### curl
 
-curl -X POST -k http://localhost:8090/v1/create -d '{"user": {"username": "jane_doe"}}'
+curl -X POST -k http://localhost:8090/v1/auth/create_token -d '{"token": "ey2957934ljkdg0345098lkns09209824lsd, "roles": []}'
 
 ## Resources
 
