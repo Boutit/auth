@@ -4,13 +4,17 @@ package boutit.auth.api;
 
 option go_package = "github.com/Boutit/auth/api/protos/boutit/auth";
 
+
 message CreateTokenRequest {
   string userId = 1;
   repeated string roles = 2;
 }
 
 message CreateTokenResponse {
- string token = 1;
+  string token = 1;
+  string token_uuid = 2;
+  string user_id = 3;
+  int64  expires_in = 4;
 }
 
 message ValidateTokenRequest {

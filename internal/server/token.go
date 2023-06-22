@@ -2,40 +2,61 @@ package server
 
 import (
 	"context"
+	"encoding/base64"
 	"fmt"
 	"time"
 
 	"github.com/Boutit/auth/api/protos/boutit/auth"
 	"github.com/Boutit/auth/internal/config"
 	"github.com/golang-jwt/jwt"
+	"github.com/google/uuid"
 )
 
+type TokenDetails struct {
+	Token     *string
+	TokenUUID string
+	UserID    string
+	ExpiresIn *int64
+}
+
 func (s authServiceServer) CreateToken(ctx context.Context, req *auth.CreateTokenRequest) (*auth.CreateTokenResponse, error) {
-	now := time.Now()
-	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
-			// standardized claims
-			"aud": "api",
-			"nbf": now.Unix(),
-			"iat": now.Unix(),
-			"exp": now.Add(time.Minute).Unix(),
-			"iss": config.GetAppConfig().Host,
+	now := time.Now().UTC()
+	td := &TokenDetails{
+		ExpiresIn: new(int64),
+		Token: new(string),
+	}
+	*td.ExpiresIn = now.Add(config.GetTokenConfig().AccessTokenTtl).Unix()
+	td.TokenUUID = uuid.New().String()
+	td.UserID = req.GetUserId()
 
-			// user is custom claim for the validated user
-			"userId": req.UserId,
+	decodedPrivateKey, err := base64.StdEncoding.DecodeString(config.GetTokenConfig().AccessTokenPrivateKey)
+	if err != nil {
+		return nil, fmt.Errorf("could not decode private key: %w", err)
+	}
 
-			// roles is a list of roles attached to the user
-			// it shows that claims can have more complex value types
-			"roles": req.Roles,
-	})
+	key, err := jwt.ParseRSAPrivateKeyFromPEM(decodedPrivateKey)
+	if err != nil {
+		return nil, fmt.Errorf("there was a problem parsing the token private key: %w", err)
+	}
 
-	tokenString, err := token.SignedString([]byte(config.GetTokenConfig().AccessTokenPrivateKey))
-
-	if (err != nil){
-		return &auth.CreateTokenResponse{}, fmt.Errorf("unable to sign token for userId: %s due to error: %t", req.UserId, err)
+	tokenClaims := make(jwt.MapClaims)
+	tokenClaims["aud"] = "api"
+	tokenClaims["nbf"] = now.Unix()
+	tokenClaims["iat"] = now.Unix()
+	tokenClaims["exp"] = td.ExpiresIn
+	tokenClaims["iss"] = config.GetAppConfig().Host
+	tokenClaims["token_uuid"] = td.TokenUUID
+	tokenClaims["sub"] = req.GetUserId()
+	*td.Token, err = jwt.NewWithClaims(jwt.SigningMethodRS256, tokenClaims).SignedString(key)
+	if(err != nil) {
+		return nil, fmt.Errorf("token could not be created due to error: %w", err)
 	}
 
 	return &auth.CreateTokenResponse{
-		Token: tokenString,
+		Token: *td.Token,
+		TokenUuid: td.TokenUUID,
+		UserId: td.UserID,
+		ExpiresIn: *td.ExpiresIn,
 	}, nil
 }
 
