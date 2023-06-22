@@ -36,7 +36,7 @@ func (s authServiceServer) CreateToken(ctx context.Context, req *auth.CreateToke
 
 	key, err := jwt.ParseRSAPrivateKeyFromPEM(decodedPrivateKey)
 	if err != nil {
-		return nil, fmt.Errorf("there was a problem parsing the token private key: %w", err)
+		return nil, fmt.Errorf("could not parse the token private key: %w", err)
 	}
 
 	tokenClaims := make(jwt.MapClaims)
@@ -49,7 +49,7 @@ func (s authServiceServer) CreateToken(ctx context.Context, req *auth.CreateToke
 	tokenClaims["sub"] = req.GetUserId()
 	*td.Token, err = jwt.NewWithClaims(jwt.SigningMethodRS256, tokenClaims).SignedString(key)
 	if(err != nil) {
-		return nil, fmt.Errorf("token could not be created due to error: %w", err)
+		return nil, fmt.Errorf("could not create token: %w", err)
 	}
 
 	return &auth.CreateTokenResponse{
@@ -61,37 +61,51 @@ func (s authServiceServer) CreateToken(ctx context.Context, req *auth.CreateToke
 }
 
 func (s authServiceServer) ValidateToken(ctx context.Context, req *auth.ValidateTokenRequest) (*auth.ValidateTokenResponse, error) {
+
+	decodedPublicKey, err := base64.StdEncoding.DecodeString(config.GetTokenConfig().AccessTokenPublicKey)
+	if err != nil {
+		return nil, fmt.Errorf("could not decode token public key: %w", err)
+	}
+
+	key, err := jwt.ParseRSAPublicKeyFromPEM(decodedPublicKey)
+	if err != nil{
+		return nil, fmt.Errorf("could not parse the token public key: %w", err)
+	}
 	
-	token, err := jwt.Parse(req.Token, func(token *jwt.Token) (interface{}, error) {
-		if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
+	parsedToken, err := jwt.Parse(req.Token, func(token *jwt.Token) (interface{}, error) {
+		if _, ok := token.Method.(*jwt.SigningMethodRSA); !ok {
 			return nil, fmt.Errorf("unexpected signing method: %v", token.Header["alg"])
 		}
-		return []byte(config.GetTokenConfig().AccessTokenPrivateKey), nil
+		return key, nil
 	})
 
 	if (err != nil){
-		return nil, err
+		return nil, fmt.Errorf("the token could not be parsed: %w", err)
+	}
+
+	tokenClaims, ok := parsedToken.Claims.(jwt.MapClaims)
+	if !ok || !parsedToken.Valid {
+		return nil, fmt.Errorf("invalid token claims")
 	}
 
 	// check for an audience claim
-	aud, ok := token.Claims.(jwt.MapClaims)["aud"]
+	aud, ok := tokenClaims["aud"] 
 	if !ok {
-			return nil, fmt.Errorf("token had no audience claim")
+			return nil, fmt.Errorf("token has no audience claim")
 	}
 
 	// check that audience is from the issuer
 	if aud != "api" {
-			return nil, fmt.Errorf("token had the wrong audience claim")
+			return nil, fmt.Errorf("token has the wrong audience claim")
 	}
-
-	tokenString, err := token.SignedString([]byte(config.GetTokenConfig().AccessTokenPublicKey))
 
 	if (err != nil){
 		return nil, fmt.Errorf("unable to validate token due to error: %t", err)
 	}
 
 	return &auth.ValidateTokenResponse{
-		Token: tokenString,
+		TokenUuid: fmt.Sprint(tokenClaims["token_uuid"]),
+		UserId: fmt.Sprint(tokenClaims["sub"]),
 	}, nil
 }
 

@@ -22,7 +22,10 @@ message ValidateTokenRequest {
 }
 
 message ValidateTokenResponse {
-  string token = 1;
+  reserved 'token';
+  reserved 1;
+  string token_uuid = 2;
+  string user_id = 3;
 }
 
 message RefreshAccessTokenRequest {
